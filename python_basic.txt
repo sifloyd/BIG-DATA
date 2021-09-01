@@ -1,0 +1,68 @@
+List_remove_append
+-------------------
+
+input_list=['SAS', 'R', 'PYTHON', 'SPSS']
+input_list[3]='SPARK'
+
+String to List Conversion
+-------------------------
+
+input_str = 'I love Data Science & Python'
+l=input_str.split('&')
+
+List to String Conversion
+--------------------------
+
+input_list = list ['Pythons syntax is easy to learn', 'Pythons syntax is very
+clear']
+result=" ".joint(input_list)
+
+Nested List
+------------
+
+input_list = [['SAS','R'],['Tableau','SQL'],['Python','Java']]
+input_list[2][0]
+
+It’s the time to disco
+----------------------
+
+t = ("disco", 12, 4.5)
+"s"
+
+String Palindrome
+------------------ 
+flag = True;    
+string = string.lower();  
+for i in range(0, len(string)//2):  
+    if(string[i] != string[len(string)-i-1]):  
+        flag = False;  
+        break;  
+if(flag):  
+    print("palindrome");  
+else:  
+    print("not a palindrome");  
+
+
+Reverse Words
+-------------
+s = "i like this program very much"
+words = s.split(' ')
+string =[]
+for word in words:
+    string.insert(0, word)
+ 
+print("Reversed String:")
+print(" ".join(string))
+
+
+
+1. S[2:6]
+2. 81
+3. 1
+4. d
+5. 
+6. [32, 34, 12, 27, 33, (14, 19)]
+7. b
+8.
+9. c
+10. d
