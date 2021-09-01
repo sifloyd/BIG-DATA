@@ -1,0 +1,74 @@
+﻿CREATE DATABASE IF NOT EXISTS sabarna2;
+
+set hive.cli.print.current.db=true;
+
+USE sabarna2;
+
+DROP TABLE IF EXISTS emp;
+CREATE TABLE emp
+(
+emp_name INT,
+unit STRING,
+exp INT,
+location STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
+
+ALTER TABLE emp CHANGE COLUMN emp_name empp_name STRING 
+COMMENT 'Employee name'
+AFTER unit;
+
+DESCRIBE FORMATTED emp;
+
+CREATE VIEW emp_view AS SELECT emp_name FROM emp LIMIT 1;
+SELECT * FROM emp_view;
+
+LOAD DATA LOCAL INPATH '/home/gsabarna5876/employee.txt' INTO TABLE emp;
+
+
+employee.txt
+--------------
+101,Amit,HADOOP:HIVE:SPARK:BIG-DATA
+102,Sumit,HIVE:OOZIE:HADOOP:SPARK:STORM
+103,Rohit,KAFKA:CASSANDRA:HBASE
+
+
+
+***load from hdfs***
+hdfs dfs -put employee.txt
+
+DROP TABLE IF EXISTS emp2;
+CREATE TABLE emp2
+(
+emp_name INT,
+unit STRING,
+exp INT,
+location STRING
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ',';
+
+LOAD DATA INPATH 'employee.txt' INTO TABLE emp;
+
+
+SELECT * FROM emp;
+
+SELECT emp_name FROM emp;
+
+SELECT e.emp_name FROM emp e;
+
+SELECT location, COUNT(*) FROM emp GROUP BY location;
+
+
+***load data in local***
+INSERT OVERWRITE LOCAL DIRECTORY '/home/gsabarna5876/'
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY '|'
+SELECT * FROM emp;
+
+
+EXPLAIN SELECT * FROM emp;
+
+
+hive -e "SELECT * FROM sabarna2.emp LIMIT 3";
